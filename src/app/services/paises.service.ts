@@ -17,7 +17,10 @@ export class PaisesService {
   constructor(private http: HttpClient) { }
 
 
-  getCountries(): Observable<any> {
-    return this.http.get<CountriesResponse>(this.urlCountries);
+  getCountries(): Observable<string[]> {
+    return this.http.get<CountriesResponse[]>(this.urlCountries)
+        .pipe(
+          map( resp => resp.map( paises => paises.name) )
+        );
   }
 }

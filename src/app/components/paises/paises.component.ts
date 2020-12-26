@@ -19,10 +19,8 @@ export class PaisesComponent implements OnInit {
 
     this.countriesService.getCountries()
             .subscribe(resp => {
-              resp.forEach((element: any) => {
-                this.paises.push(element.name);
-              });
-              console.log(this.paises);
+              console.log(resp);
+              this.paises = resp;
             });
   }
 
